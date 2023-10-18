@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
+from streamlit_extras.stylable_container import stylable_container
 import pandas as pd
 
 camera = st.camera_input("Take a photo")
@@ -22,24 +23,31 @@ col1.write(
     unsafe_allow_html=True
 )
 
-# กำหนด CSS เพื่อปรับขนาดและสีพื้นหลังของปุ่ม
-st.markdown("""
-<style>
-div.stButton > button:first-child {
-    background-color: green; /* สีเขียวสำหรับปุ่ม "Pay" */
-    width: 150px; /* กำหนดความกว้าง */
-    margin: 0 auto; /* จัดกลางแนวนอน */
-}
-div.stButton > button:last-child {
-    background-color: red; /* สีแดงสำหรับปุ่ม "Cancel" */
-    width: 150px; /* กำหนดความกว้าง */
-    margin: 0 auto; /* จัดกลางแนวนอน */
-}
-</style>
-""", unsafe_allow_html=True)
 
-if col2.button("Pay"):
-    switch_page("b")
+with col2:
+    with stylable_container(
+        key="green_button",
+        css_styles="""
+            button {
+                background-color: green;
+                color: white;
+                width: 150px; 
+            }
+            """,
+    ):
+        if st.button("Pay"):
+            switch_page("b")
 
-if col2.button("Cancel"):
-    switch_page("main")
+    with stylable_container(
+        key="red_button",
+        css_styles="""
+            button {
+                background-color: red;
+                color: white;
+                width: 150px; 
+            }
+            """,
+    ):
+        if st.button("Cancel"):
+            switch_page("main")
+
