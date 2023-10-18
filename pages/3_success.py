@@ -16,10 +16,8 @@ with col2:
     ):
         st.image("./assets/Check_green_icon.svg.png")
 
+    col2.markdown(f"<h1 style='text-align: center; color: white;'>Success</h1>", unsafe_allow_html=True)
 
-col2.markdown(f"<h1 style='text-align: center; color: white;'>Success</h1>", unsafe_allow_html=True)
-
-with col2:
     with stylable_container(
         key="green_button",
         css_styles="""
@@ -33,4 +31,3 @@ with col2:
     ):
         if st.button("OK"):
             switch_page("main")
-
