@@ -36,7 +36,8 @@ with col2:
             """,
     ):
         if st.button("Pay"):
-            switch_page("b")
+            st.session_state.total_price = total_price
+            switch_page("QR")
 
     with stylable_container(
         key="red_button",

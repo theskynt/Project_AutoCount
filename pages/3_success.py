@@ -2,8 +2,8 @@ import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.stylable_container import stylable_container
 
+
 col1, col2, _ = st.columns([1, 1, 1])
-col2.markdown("<h1 style='text-align: center; color: white;'>AutoCount 💸</h1>", unsafe_allow_html=True)
 
 with col2:
     with stylable_container(
@@ -14,7 +14,10 @@ with col2:
         }
         """,
     ):
-        st.image("./assets/869639.png")
+        st.image("./assets/Check_green_icon.svg.png")
+
+
+col2.markdown(f"<h1 style='text-align: center; color: white;'>Success</h1>", unsafe_allow_html=True)
 
 with col2:
     with stylable_container(
@@ -28,5 +31,6 @@ with col2:
             }
             """,
     ):
-        if st.button('Start'):
-            switch_page("payment")
+        if st.button("OK"):
+            switch_page("main")
+
