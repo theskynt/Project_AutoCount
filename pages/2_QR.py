@@ -40,7 +40,7 @@ with col2:
             """,
     ):
         if st.button("Pay"):
-            st.session_state.total_price = total_price
+            st.session_state.check = "success"
             switch_page("success")
 
     with stylable_container(
