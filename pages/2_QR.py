@@ -1,6 +1,10 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.stylable_container import stylable_container
+import json
+
+with open("data.json", "r") as json_file:
+    data = json.load(json_file)
 
 
 col1, col2, _ = st.columns([1, 1, 1])
@@ -18,7 +22,7 @@ with col2:
         }
         """,
     ):
-        st.image("./assets/IMG_0840.JPG")
+        st.image(f"./qr/{data['qr']}")
 
 
 col2.markdown(f"<h1 style='text-align: center; color: white;'>Price : {total_price}</h1>", unsafe_allow_html=True)
