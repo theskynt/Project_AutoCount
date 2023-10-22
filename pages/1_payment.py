@@ -6,17 +6,15 @@ import json
 from ultralytics import YOLO
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-import matplotlib.patches as patches
 from PIL import Image, ImageDraw
-import io
+
+st.markdown("<h1 style='text-align: center; color: white;'>Yolov8 Model</h1>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([1, 1])
 
 with col1:
     # Load the trained model weights.
     model = YOLO("best.pt")
-
-    # model.predict(source=0, show=True)
 
     camera = st.camera_input("Take a photo")
     data_in = []
@@ -30,7 +28,7 @@ with col1:
             f.write(camera.getvalue())
 
         # Use the saved photo for prediction
-        results = model.predict(photo_path, conf=0.50)
+        results = model.predict(photo_path, conf=0.70)
 
         photo = results[0]
         img = mpimg.imread(photo_path)
@@ -56,9 +54,6 @@ with col1:
                 draw.text((cords[0], cords[1]), label, fill="red")
 
                 data_in.append(class_id)
-                # st.write("Object type:", class_id)
-                # st.write("Confidence:", conf)
-                # st.write("---")
             
             st.write("รูปที่เข้าโมเดลแล้ว")
             # Display the image with bounding boxes
@@ -66,8 +61,6 @@ with col1:
         else:
             st.write("No predictions found.")
 
-
-# col1, col2 = st.columns([1, 1])
 with col2:
     with open("data.json", "r") as json_file:
         data = json.load(json_file)

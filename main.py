@@ -28,8 +28,23 @@ with col2:
             }
             """,
     ):
-        if st.button('Start'):
+        if st.button('Start Yolov8 Model'):
             switch_page("payment")
+
+    with stylable_container(
+        key="green_button",
+        css_styles="""
+            button {
+                justify-content: center;
+                background-color: green;
+                color: white;
+                width: 220px;
+            }
+            """,
+    ):
+        if st.button('Start Detr Model'):
+            switch_page("pay")
+
 
 
 with col3:
