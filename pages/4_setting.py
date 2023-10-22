@@ -14,7 +14,6 @@ with open("data.json", "r") as json_file:
 with open("temp_data.json", "r") as json_file:
     temp_data = json.load(json_file)
 
-st.write(temp_data)
 
 option = st.selectbox("Select", list(data["pice"].keys()))
 
